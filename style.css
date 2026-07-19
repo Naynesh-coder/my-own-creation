@@ -1,0 +1,1243 @@
+@font-face{
+    font-family: Reckless;
+    src: url(./font-rs);
+}
+
+@font-face{
+    font-family: Figtree;
+    src: url(./font-p);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Reckless;
+    color: #1b1a2e;
+    background: #faf6ec;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3{
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+img, svg{
+    display: block;
+    max-width: 100%;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* A monospace/condensed font stack for the "sticker" labels & headings
+   that use the bold condensed style in the reference (BEST SELLERS, JOURNAL, etc.) */
+
+.tag-badge,
+.pill,
+.explore-label,
+.lattes h2,
+.lattes .sub,
+.origins-heading,
+.origins-badge,
+.lattes-badge{
+   font-family: Reckless;
+}
+
+/* ============================================
+   PLACEHOLDER GRADIENTS
+   (standing in for photography / product shots)
+   ============================================ */
+
+.placeholder-gradient{
+    background-size: cover;
+    background-position: center;
+}
+
+.grad-forest      { background: linear-gradient(160deg, #2f5233, #1a3320); }
+.grad-matcha      { background: linear-gradient(135deg, #7a9b3f, #3f5a24); }
+.grad-orange-tile { background: linear-gradient(135deg, #e8672c, #c94f1c); }
+.grad-chai        { background: linear-gradient(135deg, #b9782f, #7a4d1c); }
+
+.grad-lime        { background: linear-gradient(135deg, #cbe37a, #a9cf4a); }
+.grad-lime2       { background: linear-gradient(135deg, #bfe066, #94c73a); }
+.grad-lime3       { background: linear-gradient(135deg, #d8ecac, #b7d97e); }
+.grad-mint        { background: linear-gradient(135deg, #a3ddc0, #6fbf99); }
+.grad-skyblue     { background: linear-gradient(135deg, #aecbef, #7fa8dd); }
+.grad-skyblue-lt  { background: linear-gradient(135deg, #cfe3f7, #a9c9ec); }
+.grad-amber       { background: linear-gradient(135deg, #f3c988, #e7a94f); }
+.grad-cream       { background: linear-gradient(135deg, #f3ecd8, #e6d9b8); }
+.grad-green-md    { background: linear-gradient(135deg, #8fbf5a, #5c9636); }
+
+.grad-orange-sm { background: linear-gradient(135deg, #f3a06a, #e8672c); }
+.grad-green-sm  { background: linear-gradient(135deg, #a9d16a, #6fa93b); }
+.grad-gold-sm   { background: linear-gradient(135deg, #f0c15a, #d99a20); }
+.grad-lime-sm   { background: linear-gradient(135deg, #cbe37a, #a9cf4a); }
+.grad-purple-sm { background: linear-gradient(135deg, #c8a9e8, #a679d1); }
+
+/* ============================================
+   REUSABLE UI PIECES
+   ============================================ */
+
+.btn{
+    display: inline-block;
+    padding: 0.9rem 1.9rem;
+    border-radius: 999px;
+    font-family: Figtree;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+.btn-dark{
+    background: #211f45;
+    color: #fff;
+}
+
+.btn-light{
+    background: #fff;
+    color: #211f45;
+}
+
+.btn.centered{
+    display: block;
+    width: fit-content;
+    margin: 2.5rem auto 0;
+}
+
+.btn-pill{
+    background: #fff;
+    color: #1b1a2e;
+    font-family: Figtree;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    white-space: nowrap;
+}
+
+.tag-badge{
+    display: inline-block;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 0.9rem;
+    border: 2px solid #1b1a2e;
+    border-radius: 4px;
+    transform: rotate(-2deg);
+}
+
+.tag-purple { background: #d9b7f0; }
+.tag-orange { background: #f5a13c; }
+.tag-blue   { background: #aecbef; }
+.tag-peach  { background: #f6c9a0; }
+.tag-gold   { background: #f0b23c; }
+.tag-dark   { background: #211f45; color: #fff; }
+
+.pill{
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  background: #fff;
+  border: 2px solid #1b1a2e;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 0.3rem 0.6rem;
+}
+
+/* ============================================
+   ANNOUNCEMENT BAR
+   ============================================ */
+
+.announcement-bar{
+    background: #d51f1f;
+    color: #fff;
+    text-align: center;
+    font-family: Figtree;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 0.6rem 1rem;
+}
+
+/* ============================================
+   HEADER / NAV
+   ============================================ */
+
+.site-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #faf6ec;
+    border-bottom: 1px solid #1b1a2e;
+    position: relative;
+}
+
+.nav-left,
+.nav-right{
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    font-family: Figtree;
+    font-size: 0.95rem;
+}
+
+.nav-right{
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.nav-left a,
+.nav-right a{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.caret { font-size: 0.7rem; }
+.star  { color: #f5a13c; }
+
+.logo{
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.logo span{
+    font-size: 1.1rem;
+}
+
+.cart-icon{
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.cart-count{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #f5a13c;
+    color: #1b1a2e;
+    font-size: 0.65rem;
+    font-weight: 800;
+    border-radius: 999px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-btn{
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.hero{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 640px;
+    background-image: url(https://www.twoleavestea.com/cdn/shop/files/AlpineBerry_mobile.webp?v=1774284087&width=1125.0);
+    width: 100%;
+    height: 85vh;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    padding: 3rem 0.5rem;
+    overflow: hidden;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding: 3rem 4vw;
+    max-width: 560px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    margin-bottom: 1.2rem;
+}
+
+.hero-content p {
+    font-family: Figtree;
+    font-size: 1.05rem;
+    margin-bottom: 1.8rem;
+    max-width: 420px;
+}
+
+
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.hero-arrow.light {
+    background: rgba(255,255,255,0.9);
+}
+
+.scroll-down-btn {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    background: #211f45;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 3;
+}
+
+/* ============================================
+   TAGLINE
+   ============================================ */
+
+.tagline {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+}
+
+.tagline h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    max-width: 900px;
+    margin: 0 auto 2.2rem;
+}
+
+.tagline em {
+    font-style: italic;
+}
+
+/* ============================================
+   PRODUCT ROW (scrollable, no JS)
+   ============================================ */
+
+.product-row {
+    padding: 0 2rem 4rem;
+}
+
+.product-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.product-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+}
+
+.product-thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    margin-bottom: 0.9rem;
+}
+
+.rating {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-family: Figtree;
+}
+
+.add-btn {
+    position: absolute;
+    bottom: 0.9rem;
+    right: 0.9rem;
+    background: #fff;
+    border: 1px solid #1b1a2e;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-family: Figtree;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.product-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+}
+
+.product-card .price {
+    font-family: Figtree;
+    font-weight: 700;
+    color: #b5651d;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.product-card .desc {
+    font-family: Figtree;
+    font-size: 0.85rem;
+    color: #4a4860;
+}
+
+/* ============================================
+   DISCOVER
+   ============================================ */
+
+.discover {
+    padding: 5rem 2rem;
+    max-width: 900px;
+}
+
+.discover h2 {
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    margin: 1.5rem 0 2.5rem;
+}
+
+.discover-form input {
+    width: 100%;
+    max-width: 500px;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid #1b1a2e;
+    border-radius: 10px;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #9a9788;
+    background: transparent;
+}
+
+.explore-label {
+    margin-top: 2.5rem;
+    font-family: Figtree;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #b5651d;
+}
+
+/* ============================================
+   ORIGINS
+   ============================================ */
+
+.origins {
+    padding: 0;
+}
+
+.origins-photo {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.origins-tag {
+    margin-bottom: 1.5rem;
+}
+
+.origins-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 130px;
+    height: 130px;
+    border-radius: 999px;
+    background: #b7d64a;
+    border: 2px solid #1b1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 0.5rem;
+    transform: rotate(8deg);
+}
+
+.origins-badge .small {
+    font-size: 0.55rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+.origins-heading {
+    color: #fff;
+    font-family: Figtree;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    letter-spacing: 0.01em;
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+
+.testimonials {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin-bottom: 3rem;
+}
+
+.testimonial-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    text-align: left;
+}
+
+.testimonial-card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    border-radius: 10px;
+    padding: 2.5rem 1.8rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+}
+
+.t-orange { background: #e8825a; color: #2b1608; }
+.t-green  { background: #a9cf4a; color: #1e2b08; }
+.t-yellow { background: #f0b23c; color: #2b1e08; }
+.t-purple { background: #c8a9e8; color: #251636; }
+
+.testimonial-card .quote {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card .author {
+    font-family: Figtree;
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin-bottom: 1.5rem;
+}
+
+.t-product {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.35);
+    border-radius: 8px;
+    padding: 0.6rem;
+}
+
+.t-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.t-product span {
+    font-family: Figtree;
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex: 1;
+    line-height: 1.2;
+}
+
+/* ============================================
+   WHOLESALE BANNER
+   ============================================ */
+
+.wholesale-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+}
+
+.wholesale-photo {
+    min-height: 420px;
+}
+
+.wholesale-content {
+    background: #211f45;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4vw;
+}
+
+.wholesale-content h2 {
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+    margin-bottom: 1.2rem;
+}
+
+.wholesale-content p {
+    font-family: Figtree;
+    max-width: 400px;
+    margin-bottom: 1.8rem;
+}
+
+/* ============================================
+   LATTES
+   ============================================ */
+
+.lattes {
+    background: #a5691f;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem 0;
+    position: relative;
+}
+
+.lattes h2 {
+    font-family: Figtree;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin: 1.2rem 0 0.6rem;
+}
+
+.lattes .sub {
+    font-family: Figtree;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+    margin-bottom: 3rem;
+}
+
+.lattes-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 130px;
+    height: 130px;
+    border-radius: 999px;
+    background: #d9b7f0;
+    border: 2px solid #1b1a2e;
+    color: #1b1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 0.5rem;
+    transform: rotate(6deg);
+}
+
+.lattes-badge .small {
+    font-size: 0.53rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+.latte-feature {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #f6c9a0;
+    border-radius: 16px 16px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+    color: #1b1a2e;
+}
+
+.latte-photo {
+    min-height: 380px;
+}
+
+.latte-info {
+    padding: 2.5rem 3vw;
+    text-align: left;
+}
+
+.latte-info h3 {
+    font-size: 2.4rem;
+    margin: 1rem 0 1rem;
+}
+
+.latte-info p {
+    font-family: Figtree;
+    font-size: 0.95rem;
+    margin-bottom: 1.6rem;
+    max-width: 340px;
+}
+
+/* ============================================
+   JOURNAL
+   ============================================ */
+
+.journal {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.journal h2 {
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    max-width: 800px;
+    margin: 1.2rem auto 3rem;
+}
+
+.journal-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+}
+
+.journal-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+    text-align: left;
+}
+
+.journal-thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.journal-icon {
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+.journal-title {
+    font-family: Figtree;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 0.7rem 0.9rem;
+    background: #cfe3f7;
+    border-radius: 4px;
+}
+
+/* ============================================
+   GOOD COMPANY
+   ============================================ */
+
+.good-company{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Image */
+
+.company-bg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* Orange Card */
+
+.good-company-card{
+    position:absolute;
+    top:50%;
+    left:4%;
+    transform:translateY(-50%);
+    width:420px;
+    background:#e86f2c;
+    color:#fff;
+    padding:60px 45px;
+    border-radius:12px;
+    border:2px solid rgba(0,0,0,.5);
+}
+
+/* Heading */
+
+.good-company-card h2{
+    font-size:4rem;
+    line-height:1.15;
+    font-weight:400;
+    margin-bottom:30px;
+}
+
+/* Paragraph */
+
+.good-company-card p{
+    font-size:1.1rem;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* Button */
+
+.btn{
+    display:inline-block;
+    padding:14px 32px;
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    border-radius:4px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#333;
+}
+
+/* ============================================
+   NEWSLETTER
+   ============================================ */
+
+.newsletter {
+  background: #b9d6f5;
+  padding: 4.5rem 2rem;
+}
+
+.newsletter h2 {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  max-width: 500px;
+  margin: 1rem 0 2rem;
+  font-family: Figtree;
+  font-weight: 400;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 550px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 1rem 1.2rem;
+  border: none;
+  border-radius: 999px;
+  font-family: Figtree;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 2px solid #1b1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.site-footer {
+  background: #211f45;
+  color: #cfcbe6;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  padding: 3.5rem 2rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-col a {
+  display: block;
+  font-family: Figtree;
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+}
+
+.footer{
+    width:100%;
+    background:#c6dcf7;
+    overflow:hidden;
+    position:relative;
+    text-align:center;
+    padding-top:70px;
+}
+
+/* Logo Center */
+.footer-logo{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.footer-logo img{
+    width:330px;
+    display:block;
+}
+
+/* Mountain Image */
+.footer-image{
+    width:100%;
+    line-height:0;
+}
+
+.footer-image img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+}
+
+/* Copyright */
+.footer-copy{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    font-family:Figtree,sans-serif;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#555;
+}
+
+.footer-copy p{
+    margin:3px 0;
+    color: rgb(1, 1, 46);
+    background-color: rgb(188, 144, 99);
+}
+
+
+/* ===========================================
+   LAPTOP (1024px - 1440px)
+=========================================== */
+
+@media (max-width:1200px){
+.site-header{
+    padding:16px 30px;
+}
+
+.hero{
+    height:75vh;
+    background-size:cover;
+}
+
+.hero-content{
+    max-width:500px;
+    padding:40px;
+}
+
+.hero-content h1{
+    font-size:3rem;
+}
+
+.good-company-card{
+    width:350px;
+    padding:40px;
+}
+
+.footer-columns{
+    grid-template-columns:repeat(3,1fr);
+}
+}
+
+/* ===========================================
+   TABLET
+=========================================== */
+
+@media (max-width:992px){
+.site-header{
+    padding:15px 20px;
+}
+
+.nav-left,
+.nav-right{
+    display:none;
+}
+
+.mobile-menu-btn{
+    display:block;
+}
+
+.nav-part{
+    margin:auto;
+}
+
+.hero{
+    height:75vh;
+    background-position:center;
+    justify-content:flex-end;
+}
+
+.hero-content{
+    padding:30px;
+    max-width:420px;
+}
+
+.hero-content h1{
+    font-size:2.6rem;
+}
+
+.hero-content p{
+    font-size:15px;
+}
+
+.wholesale-banner,
+.latte-feature{
+    grid-template-columns:1fr;
+}
+
+.wholesale-photo,
+.latte-photo{
+    min-height:320px;
+}
+
+.good-company{
+    height:80vh;
+}
+
+.good-company-card{
+    position:relative;
+    top:auto;
+    left:auto;
+    transform:none;
+    width:90%;
+    margin:40px auto;
+}
+
+.footer-columns{
+    grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* ===========================================
+   MOBILE
+=========================================== */
+
+@media (max-width:768px){
+.site-header{
+    padding:12px 15px;
+}
+
+.hero{
+    height:80vh;
+    padding:20px;
+    align-items:flex-start;
+    justify-content:flex-end;
+    background-size:cover;
+}
+
+.hero-content{
+    padding:0;
+    max-width:100%;
+}
+
+.hero-content h1{
+    font-size:2.2rem;
+}
+
+.hero-content p{
+    font-size:14px;
+    width:100%;
+}
+
+.hero-arrow{
+    display:none;
+}
+
+.scroll-down-btn{
+    width:40px;
+    height:40px;
+}
+
+.tagline,
+.discover,
+.testimonials,
+.journal{
+    padding:60px 20px;
+}
+
+.product-card,
+.testimonial-card,
+.journal-card{
+    flex:0 0 250px;
+}
+
+.origins-badge,
+.lattes-badge{
+    width:80px;
+    height:80px;
+}
+
+.origins-heading{
+    font-size:2rem;
+}
+
+.wholesale-content{
+    padding:40px 25px;
+}
+
+.latte-info{
+    padding:30px 20px;
+    text-align:center;
+}
+
+.good-company{
+    height:auto;
+}
+
+.good-company-card{
+    width:90%;
+    padding:30px 20px;
+}
+
+.good-company-card h2{
+    font-size:2rem;
+}
+
+.newsletter-form{
+    flex-direction:column;
+}
+
+.newsletter-form input,
+.newsletter-form button{
+    width:100%;
+}
+
+.footer-columns{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.footer-logo img{
+    width:220px;
+}
+
+.footer-copy{
+    position:static;
+    transform:none;
+    padding:20px;
+}
+}
+
+/* ===========================================
+   SMALL MOBILE
+=========================================== */
+
+@media (max-width:480px){
+.hero{
+    height:75vh;
+}
+
+.hero-content h1{
+    font-size:1.8rem;
+}
+
+.hero-content p{
+    font-size:13px;
+}
+
+.btn{
+    width:100%;
+    text-align:center;
+}
+
+.product-card,
+.testimonial-card,
+.journal-card{
+    flex:0 0 210px;
+}
+
+.footer-logo img{
+    width:180px;
+}
+
+.footer-image img{
+    height:auto;
+}
+}
